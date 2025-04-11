@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 import FamilyGroup from "../models/FamilyGroup.js";
 
+
 const JWT_SECRET = process.env.JWT_SECRET || "secret_key"; // .env me store karna
 
 // Register

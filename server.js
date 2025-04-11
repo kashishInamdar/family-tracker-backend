@@ -5,6 +5,8 @@ import dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
+import locationRoutes from "./routes/locationRoutes.js";
+
 
 dotenv.config();
 connectDB();
@@ -12,8 +14,8 @@ connectDB();
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
-  cors: {
-      origin: "*", // We can restrict this in production
+    cors: {
+        origin: "*", // We can restrict this in production
     },
 });
 
@@ -21,6 +23,9 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
+app.use("/api/location", locationRoutes);
+
+
 
 io.on("connection", (socket) => {
   console.log("User connected:", socket.id);
